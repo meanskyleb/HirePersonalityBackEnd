@@ -1,17 +1,17 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using RedStarter.Database.Contexts;
-using RedStarter.Database.DataContract.Application;
-using RedStarter.Database.Entities.Application;
-using RedStarter.Database.Entities.People;
+using HirePersonality.Database.Contexts;
+using HirePersonality.Database.DataContract.Application;
+using HirePersonality.Database.Entities.Application;
+using HirePersonality.Database.Entities.People;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RedStarter.Database.Application
+namespace HirePersonality.Database.Application
 {
     public class ApplicationRepository : IApplicationRepository
     {

@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using RedStarter.Business.DataContract.Application.DTOs;
-using RedStarter.Business.DataContract.Application.Interfaces;
-using RedStarter.Database.DataContract.Application;
-using RedStarter.Database.DataContract.Authorization.Interfaces;
-using RedStarter.Database.DataContract.Roles.Interfaces;
+using HirePersonality.Business.DataContract.Application.DTOs;
+using HirePersonality.Business.DataContract.Application.Interfaces;
+using HirePersonality.Database.DataContract.Application;
+using HirePersonality.Database.DataContract.Authorization.Interfaces;
+using HirePersonality.Database.DataContract.Roles.Interfaces;
 using System;
 using System.Threading.Tasks;
 
-namespace RedStarter.Business.Managers.Application
+namespace HirePersonality.Business.Managers.Application
 {
     public class UserApplicationManager : IUserApplicationManager
     {

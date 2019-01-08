@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Configuration;
-using RedStarter.Business.DataContract.Authorization.DTOs;
-using RedStarter.Business.DataContract.Authorization.Interfaces;
-using RedStarter.Database.DataContract.Authorization.Interfaces;
-using RedStarter.Database.DataContract.Authorization.RAOs;
+using HirePersonality.Business.DataContract.Authorization.DTOs;
+using HirePersonality.Business.DataContract.Authorization.Interfaces;
+using HirePersonality.Database.DataContract.Authorization.Interfaces;
+using HirePersonality.Database.DataContract.Authorization.RAOs;
 using System;
 using System.Threading.Tasks;
 
-namespace RedStarter.Business.Managers.Authorization
+namespace HirePersonality.Business.Managers.Authorization
 {
     public class AuthManager : IAuthManager
     {

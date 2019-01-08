@@ -12,26 +12,26 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using RedStarter.API.MappingProfiles;
-using RedStarter.Business.DataContract.Application.Interfaces;
-using RedStarter.Business.DataContract.Authorization.Interfaces;
-using RedStarter.Business.Managers.Application;
-using RedStarter.Business.Managers.Authorization;
-using RedStarter.Database.Application;
-using RedStarter.Database.Authorization;
-using RedStarter.Database.Contexts;
-using RedStarter.Database.DataContract.Application;
-using RedStarter.Database.DataContract.Authorization.Interfaces;
-using RedStarter.Database.DataContract.Roles.Interfaces;
-using RedStarter.Database.Entities.People;
-using RedStarter.Database.Entities.Roles;
-using RedStarter.Database.Roles;
-using RedStarter.Database.SeedData;
+using HirePersonality.API.MappingProfiles;
+using HirePersonality.Business.DataContract.Application.Interfaces;
+using HirePersonality.Business.DataContract.Authorization.Interfaces;
+using HirePersonality.Business.Managers.Application;
+using HirePersonality.Business.Managers.Authorization;
+using HirePersonality.Database.Application;
+using HirePersonality.Database.Authorization;
+using HirePersonality.Database.Contexts;
+using HirePersonality.Database.DataContract.Application;
+using HirePersonality.Database.DataContract.Authorization.Interfaces;
+using HirePersonality.Database.DataContract.Roles.Interfaces;
+using HirePersonality.Database.Entities.People;
+using HirePersonality.Database.Entities.Roles;
+using HirePersonality.Database.Roles;
+using HirePersonality.Database.SeedData;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Net;
 using System.Text;
 
-namespace RedStarter.API
+namespace HirePersonality.API
 {
     public class Startup
     {
@@ -95,6 +95,7 @@ namespace RedStarter.API
             {
                 mc.AddProfile(new MappingProfile());
                 mc.AddProfile(new ApplicationMappingProfile());
+                mc.AddProfile(new PersonalityMappingProfile());
             });
 
             IMapper mapper = mappingConfig.CreateMapper();

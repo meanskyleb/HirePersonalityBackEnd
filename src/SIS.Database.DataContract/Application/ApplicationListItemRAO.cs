@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RedStarter.Database.DataContract.Application
+namespace HirePersonality.Database.DataContract.Application
 {
     public class ApplicationListItemRAO
     {

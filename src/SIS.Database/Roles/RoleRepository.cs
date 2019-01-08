@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using RedStarter.Database.DataContract.Authorization.RAOs;
-using RedStarter.Database.DataContract.Roles.Interfaces;
-using RedStarter.Database.Entities.People;
+using HirePersonality.Database.DataContract.Authorization.RAOs;
+using HirePersonality.Database.DataContract.Roles.Interfaces;
+using HirePersonality.Database.Entities.People;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RedStarter.Database.Roles
+namespace HirePersonality.Database.Roles
 {
     public class RoleRepository : IRoleRepository
     {
