@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using AutoMapper;
 using HirePersonality.API.DataContract.Job;
 using HirePersonality.Business.DataContract.Job;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HirePersonality.API.Controllers.Job
 {
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class JobController : Controller
