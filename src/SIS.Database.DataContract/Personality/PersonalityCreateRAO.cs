@@ -10,7 +10,7 @@ namespace HirePersonality.Database.DataContract.Personality
     {
         public int PersonalityNumber { get; set; }
         public Guid UserId { get; set; }
-        public PersonalityType PersonalityType { get; set; }
+        public int PersonalityType { get; set; }
     }
     
 }

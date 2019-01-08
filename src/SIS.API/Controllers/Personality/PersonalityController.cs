@@ -29,6 +29,22 @@ namespace HirePersonality.API.Controllers.Personality
             var dto = _mapper.Map<PersonalityCreateDTO>(request);
 
             //Logic for personalities go here.
+            if (dto.PersonalityNumber >=-30 && dto.PersonalityNumber < 5)
+            {
+                dto.PersonalityType = 1;
+            }
+            else if (dto.PersonalityNumber >=5 && dto.PersonalityNumber < 10)
+            {
+                dto.PersonalityType = 2;
+            }
+            else if (dto.PersonalityNumber >= 10 && dto.PersonalityNumber < 15)
+            {
+                dto.PersonalityType = 3;
+            }
+            else
+            {
+                dto.PersonalityType = 4;
+            }
             return Ok();
         }
     }
