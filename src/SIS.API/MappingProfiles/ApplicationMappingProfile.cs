@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using RedStarter.API.DataContract.Application;
-using RedStarter.Business.DataContract.Application.DTOs;
-using RedStarter.Database.DataContract.Application;
-using RedStarter.Database.Entities.Application;
+using HirePersonality.API.DataContract.Application;
+using HirePersonality.Business.DataContract.Application.DTOs;
+using HirePersonality.Database.DataContract.Application;
+using HirePersonality.Database.Entities.Application;
 
-namespace RedStarter.API.MappingProfiles
+namespace HirePersonality.API.MappingProfiles
 {
     public class ApplicationMappingProfile : Profile
     {
