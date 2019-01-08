@@ -1,4 +1,9 @@
 ﻿using AutoMapper;
+using HirePersonality.API.MappingProfiles;
+using HirePersonality.Business.DataContract.Job;
+using HirePersonality.Business.Managers.Job;
+using HirePersonality.Database.DataContract.Job;
+using HirePersonality.Database.Job;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -95,7 +100,9 @@ namespace HirePersonality.API
             {
                 mc.AddProfile(new MappingProfile());
                 mc.AddProfile(new ApplicationMappingProfile());
+                mc.AddProfile(new JobMappingProfile());
                 mc.AddProfile(new PersonalityMappingProfile());
+
             });
 
             IMapper mapper = mappingConfig.CreateMapper();
@@ -108,6 +115,8 @@ namespace HirePersonality.API
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IApplicationRepository, ApplicationRepository>();
             services.AddScoped<IUserApplicationManager, UserApplicationManager>();
+            services.AddScoped<IJobManager, JobManager>();
+            services.AddScoped<IJobRepository, JobRepository>();
 
             //======= Swagger =======
             services.AddSwaggerGen(c =>
