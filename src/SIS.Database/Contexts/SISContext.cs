@@ -3,11 +3,11 @@ using HirePersonality.Database.Entities.Personality;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using RedStarter.Database.Entities.Application;
-using RedStarter.Database.Entities.People;
-using RedStarter.Database.Entities.Roles;
+using HirePersonality.Database.Entities.Application;
+using HirePersonality.Database.Entities.People;
+using HirePersonality.Database.Entities.Roles;
 
-namespace RedStarter.Database.Contexts
+namespace HirePersonality.Database.Contexts
 {
     public class SISContext : IdentityDbContext
         <UserEntity, 

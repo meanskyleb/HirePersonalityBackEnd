@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RedStarter.Database.DataContract.Application
+namespace HirePersonality.Database.DataContract.Application
 {
     public interface IApplicationRepository
     {

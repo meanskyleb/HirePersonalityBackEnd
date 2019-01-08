@@ -1,10 +1,10 @@
-﻿using RedStarter.Business.DataContract.Authorization.DTOs;
+﻿using HirePersonality.Business.DataContract.Authorization.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RedStarter.Business.DataContract.Authorization.Interfaces
+namespace HirePersonality.Business.DataContract.Authorization.Interfaces
 {
     public interface IAuthManager
     {

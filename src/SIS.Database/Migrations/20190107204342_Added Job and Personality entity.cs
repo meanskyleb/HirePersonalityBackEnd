@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RedStarter.Database.Migrations
+namespace HirePersonality.Database.Migrations
 {
     public partial class AddedJobandPersonalityentity : Migration
     {

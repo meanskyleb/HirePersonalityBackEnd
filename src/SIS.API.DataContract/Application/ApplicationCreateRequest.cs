@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RedStarter.API.DataContract.Application
+namespace HirePersonality.API.DataContract.Application
 {
     public class ApplicationCreateRequest
     {

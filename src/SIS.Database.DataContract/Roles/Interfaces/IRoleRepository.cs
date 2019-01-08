@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using RedStarter.Database.DataContract.Authorization.RAOs;
+using HirePersonality.Database.DataContract.Authorization.RAOs;
 
-namespace RedStarter.Database.DataContract.Roles.Interfaces
+namespace HirePersonality.Database.DataContract.Roles.Interfaces
 {
     public interface IRoleRepository
     {

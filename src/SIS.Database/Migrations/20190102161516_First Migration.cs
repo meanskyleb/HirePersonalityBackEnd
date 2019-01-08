@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RedStarter.Database.Migrations
+namespace HirePersonality.Database.Migrations
 {
     public partial class FirstMigration : Migration
     {
