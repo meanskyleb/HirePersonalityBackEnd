@@ -6,5 +6,7 @@ namespace HirePersonality.API.DataContract.Job
 {
     public class JobCreateRequest
     {
+        public string JobName { get; set; }
+
     }
 }

@@ -2,15 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HirePersonality.API.Controllers.Job
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class JobController : Controller
     {
-        public IActionResult Index()
+        private readonly IMapper _mapper;
+        private readonly IJobManager _manager;
+
+        public JobController(IMapper mapper, IJobManager manager)
         {
-            return View();
+            _mapper = mapper;
+            _manager = manager;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostJob(JobCreateRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+
+            var dto = _mapper.Map<JobCreateDTO>(request);
+
+            if (await _manager.CreateJob(dto))
+                return StatusCode(201);
+
+            throw new Exception();
         }
     }
 }

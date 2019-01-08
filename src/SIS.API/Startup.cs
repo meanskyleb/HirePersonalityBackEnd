@@ -95,6 +95,7 @@ namespace RedStarter.API
             {
                 mc.AddProfile(new MappingProfile());
                 mc.AddProfile(new ApplicationMappingProfile());
+                mc.AddProfile(new JobMappingProfile());
             });
 
             IMapper mapper = mappingConfig.CreateMapper();
@@ -107,6 +108,8 @@ namespace RedStarter.API
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IApplicationRepository, ApplicationRepository>();
             services.AddScoped<IUserApplicationManager, UserApplicationManager>();
+            services.AddScoped<IJobManager, JobManager>();
+            services.AddScoped<IJobRepository, JobRepository>();
 
             //======= Swagger =======
             services.AddSwaggerGen(c =>
