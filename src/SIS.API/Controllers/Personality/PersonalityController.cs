@@ -54,13 +54,19 @@ namespace HirePersonality.API.Controllers.Personality
             throw new NotImplementedException();
         }
         [HttpGet]
-        public async Task<IEnumerable<ReceivePersonalityRequest>> GetPersonality()
+        public async Task<IActionResult> GetPersonality()
         {
-            var request = _mapper.Map<IEnumerable<ReceivePersonalityRequest>>(
-                _manager.GetPersonality()
-                );
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            return request;
+            var dto = await _manager.GetPersonality();
+
+            var request = 
+                _mapper.Map<IEnumerable<ReceivePersonalityRequest>>(dto);
+
+            return Ok(request);
         }
     }
 }

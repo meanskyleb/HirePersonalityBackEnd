@@ -2,6 +2,7 @@
 using HirePersonality.Database.Contexts;
 using HirePersonality.Database.DataContract.Personality;
 using HirePersonality.Database.Entities.Personality;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,15 +33,12 @@ namespace HirePersonality.Database.Personality
 
         public async Task<IEnumerable<ReceivePersonalityRAO>> GetPersonality()
         {
-            var query =
-                _mapper.
-                Map<IEnumerable<ReceivePersonalityRAO>>(
-                 _context
-                .PersonalityTableAccess
-                .ToList()
-                );
+            var query = await _context.PersonalityTableAccess.ToArrayAsync();
 
-            return query;
+            var rao = _mapper.Map < IEnumerable<ReceivePersonalityRAO>>(query);
+               
+
+            return rao;
         }
     }
 }

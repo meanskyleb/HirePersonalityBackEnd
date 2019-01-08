@@ -31,11 +31,9 @@ namespace HirePersonality.Business.Managers.Personality
 
         public async Task<IEnumerable<ReceivePersonalityDTO>> GetPersonality()
         {
-            var dto =
-                _mapper
-                .Map<IEnumerable<ReceivePersonalityDTO>>(
-                    _repository.GetPersonality()
-                    );
+            var rao = await _repository.GetPersonality();
+
+            var dto = _mapper.Map<IEnumerable<ReceivePersonalityDTO>>(rao);
 
             return dto;
 
