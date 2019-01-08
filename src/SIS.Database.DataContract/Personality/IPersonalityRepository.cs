@@ -8,5 +8,6 @@ namespace HirePersonality.Database.DataContract.Personality
     public interface IPersonalityRepository
     {
         Task<bool> CreatePersonality(PersonalityCreateRAO rao);
+        Task<IEnumerable<ReceivePersonalityRAO>> GetPersonality();
     }
 }

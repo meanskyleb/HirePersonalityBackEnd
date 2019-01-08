@@ -4,6 +4,7 @@ using HirePersonality.Database.DataContract.Personality;
 using HirePersonality.Database.Entities.Personality;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,6 +28,19 @@ namespace HirePersonality.Database.Personality
              _context.PersonalityTableAccess.AddAsync(entity);
 
             return await _context.SaveChangesAsync() == 1;
+        }
+
+        public async Task<IEnumerable<ReceivePersonalityRAO>> GetPersonality()
+        {
+            var query =
+                _mapper.
+                Map<IEnumerable<ReceivePersonalityRAO>>(
+                 _context
+                .PersonalityTableAccess
+                .ToList()
+                );
+
+            return query;
         }
     }
 }

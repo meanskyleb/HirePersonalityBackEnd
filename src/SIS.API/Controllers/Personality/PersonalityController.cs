@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -51,6 +52,15 @@ namespace HirePersonality.API.Controllers.Personality
                 return StatusCode(201);
             
             throw new NotImplementedException();
+        }
+        [HttpGet]
+        public async Task<IEnumerable<ReceivePersonalityRequest>> GetPersonality()
+        {
+            var request = _mapper.Map<IEnumerable<ReceivePersonalityRequest>>(
+                _manager.GetPersonality()
+                );
+
+            return request;
         }
     }
 }

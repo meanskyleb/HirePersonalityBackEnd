@@ -28,5 +28,17 @@ namespace HirePersonality.Business.Managers.Personality
 
             throw new Exception();
         }
+
+        public async Task<IEnumerable<ReceivePersonalityDTO>> GetPersonality()
+        {
+            var dto =
+                _mapper
+                .Map<IEnumerable<ReceivePersonalityDTO>>(
+                    _repository.GetPersonality()
+                    );
+
+            return dto;
+
+        }
     }
 }
