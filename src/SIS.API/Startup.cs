@@ -30,6 +30,10 @@ using HirePersonality.Database.SeedData;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Net;
 using System.Text;
+using HirePersonality.Business.DataContract.Personality;
+using HirePersonality.Business.Managers.Personality;
+using HirePersonality.Database.DataContract.Personality;
+using HirePersonality.Database.Personality;
 
 namespace HirePersonality.API
 {
@@ -108,7 +112,8 @@ namespace HirePersonality.API
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IApplicationRepository, ApplicationRepository>();
             services.AddScoped<IUserApplicationManager, UserApplicationManager>();
-
+            services.AddScoped<IPersonalityManager, PersonalityManager>();
+            services.AddScoped<IPersonalityRepository, PersonalityRepository>();
             //======= Swagger =======
             services.AddSwaggerGen(c =>
             {
