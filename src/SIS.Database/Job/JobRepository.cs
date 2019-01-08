@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using HirePersonality.Database.DataContract.Job;
 using HirePersonality.Database.Entities.Job;
-using RedStarter.Database.Contexts;
+using HirePersonality.Database.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Text;
