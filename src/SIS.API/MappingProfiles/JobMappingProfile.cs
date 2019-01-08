@@ -1,4 +1,8 @@
 ﻿using AutoMapper;
+using HirePersonality.API.DataContract.Job;
+using HirePersonality.Business.DataContract.Job;
+using HirePersonality.Database.DataContract.Job;
+using HirePersonality.Database.Entities.Job;
 using System;
 using System.Collections.Generic;
 using System.Linq;

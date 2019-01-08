@@ -7,6 +7,10 @@ namespace HirePersonality.API.DataContract.Job
     public class JobCreateRequest
     {
         public string JobName { get; set; }
-
+        public string JobCompany { get; set; }
+        public string JobDesc { get; set; }
+        public string JobCompensation { get; set; }
+        public string JobHours { get; set; }
+        public string JobDesiredPersonality { get; set; }
     }
 }

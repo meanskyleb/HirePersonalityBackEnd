@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using HirePersonality.API.DataContract.Job;
+using HirePersonality.Business.DataContract.Job;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HirePersonality.API.Controllers.Job

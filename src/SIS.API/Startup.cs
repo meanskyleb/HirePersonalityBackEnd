@@ -1,4 +1,9 @@
 ﻿using AutoMapper;
+using HirePersonality.API.MappingProfiles;
+using HirePersonality.Business.DataContract.Job;
+using HirePersonality.Business.Managers.Job;
+using HirePersonality.Database.DataContract.Job;
+using HirePersonality.Database.Job;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
