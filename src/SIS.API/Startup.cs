@@ -95,6 +95,7 @@ namespace HirePersonality.API
             {
                 mc.AddProfile(new MappingProfile());
                 mc.AddProfile(new ApplicationMappingProfile());
+                mc.AddProfile(new PersonalityMappingProfile());
             });
 
             IMapper mapper = mappingConfig.CreateMapper();
