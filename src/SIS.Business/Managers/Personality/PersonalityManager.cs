@@ -1,4 +1,6 @@
-﻿using HirePersonality.Business.DataContract.Personality;
+﻿using AutoMapper;
+using HirePersonality.Business.DataContract.Personality;
+using HirePersonality.Database.DataContract.Personality;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,9 +10,35 @@ namespace HirePersonality.Business.Managers.Personality
 {
     public class PersonalityManager : IPersonalityManager
     {
-        public Task<bool> CreatePersonality(PersonalityCreateDTO dto)
+        private readonly IMapper _mapper;
+        private readonly IPersonalityRepository _repository;
+
+        public PersonalityManager(IMapper mapper, IPersonalityRepository repository)
         {
-            throw new NotImplementedException();
+            _mapper = mapper;
+            _repository = repository;
+        }
+
+        public async Task<bool> CreatePersonality(PersonalityCreateDTO dto)
+        {
+            var rao = _mapper.Map<PersonalityCreateRAO>(dto);
+
+            if(await _repository.CreatePersonality(rao))
+                return true;
+
+            throw new Exception();
+        }
+
+        public async Task<IEnumerable<ReceivePersonalityDTO>> GetPersonality()
+        {
+            var dto =
+                _mapper
+                .Map<IEnumerable<ReceivePersonalityDTO>>(
+                    _repository.GetPersonality()
+                    );
+
+            return dto;
+
         }
     }
 }

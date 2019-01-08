@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,10 +18,12 @@ namespace HirePersonality.API.Controllers.Personality
     public class PersonalityController : Controller
     {
         private readonly IMapper _mapper;
+        private readonly IPersonalityManager _manager;
 
-        public PersonalityController(IMapper mapper) 
+        public PersonalityController(IMapper mapper, IPersonalityManager manager) 
         {
                 _mapper = mapper;
+                _manager = manager;
         }
 
         [HttpPost]
@@ -45,7 +48,19 @@ namespace HirePersonality.API.Controllers.Personality
             {
                 dto.PersonalityType = 4;
             }
-            return Ok();
+            if (await _manager.CreatePersonality(dto))
+                return StatusCode(201);
+            
+            throw new NotImplementedException();
+        }
+        [HttpGet]
+        public async Task<IEnumerable<ReceivePersonalityRequest>> GetPersonality()
+        {
+            var request = _mapper.Map<IEnumerable<ReceivePersonalityRequest>>(
+                _manager.GetPersonality()
+                );
+
+            return request;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace HirePersonality.Database.Authorization
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _mapper = mapper;
+            _mapper = mapper;  
             _context = context;
         }
 
