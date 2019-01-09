@@ -4,9 +4,7 @@ using System.Text;
 
 namespace HirePersonality.Database.DataContract.Personality
 {
-    public class PersonalityGetRAO
+    public class DeletePersonalityRAO
     {
-        public int PersonalityNumber { get; set; }
-        public Guid UserId { get; set; }
     }
 }

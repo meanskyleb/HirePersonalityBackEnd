@@ -21,7 +21,7 @@ namespace HirePersonality.Business.Managers.Personality
 
         public async Task<bool> CreatePersonality(PersonalityCreateDTO dto)
         {
-            var rao = _mapper.Map<PersonalityCreateRAO>(dto);
+            var rao = _mapper.Map<CreatePersonalityRAO>(dto);
 
             if(await _repository.CreatePersonality(rao))
                 return true;

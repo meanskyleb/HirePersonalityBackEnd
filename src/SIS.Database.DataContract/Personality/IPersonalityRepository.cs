@@ -7,7 +7,10 @@ namespace HirePersonality.Database.DataContract.Personality
 {
     public interface IPersonalityRepository
     {
-        Task<bool> CreatePersonality(PersonalityCreateRAO rao);
+        Task<bool> CreatePersonality(CreatePersonalityRAO rao);
         Task<IEnumerable<ReceivePersonalityRAO>> GetPersonality();
+        Task<ReceivePersonalityRAO> GetPersonalityAsync(int id);
+        Task<DeletePersonalityRAO> DeletePersonality(int id);
+        Task<UpdatePersonalityRAO> UpdatePersonality(int id);
     }
 }
