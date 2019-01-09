@@ -45,7 +45,7 @@ namespace HirePersonality.API.Controllers.Personality
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
-            }
+            } 
 
             var dto = await _manager.GetPersonality();
 
