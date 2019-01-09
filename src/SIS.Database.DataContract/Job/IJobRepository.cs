@@ -8,5 +8,9 @@ namespace HirePersonality.Database.DataContract.Job
     public interface IJobRepository
     {
         Task<bool> CreateJob(JobCreateRAO rao);
+        Task<IEnumerable<ReceiveJobRAO>> GetJob();
+        Task<ReceiveJobRAO> GetJob(int id);
+        Task<bool> DeleteJob(int id);
+        Task<bool> UpdateJob(UpdateJobRAO rao);
     }
 }
