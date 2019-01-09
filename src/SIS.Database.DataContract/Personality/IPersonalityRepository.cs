@@ -9,7 +9,7 @@ namespace HirePersonality.Database.DataContract.Personality
     {
         Task<bool> CreatePersonality(CreatePersonalityRAO rao);
         Task<IEnumerable<ReceivePersonalityRAO>> GetPersonality();
-        Task<ReceivePersonalityRAO> GetPersonalityAsync(int id);
+        Task<ReceivePersonalityRAO> GetPersonality(int id);
         Task<bool> DeletePersonality(int id);
         Task<bool> UpdatePersonality(UpdatePersonalityRAO rao);
     }

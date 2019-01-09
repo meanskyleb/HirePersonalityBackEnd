@@ -38,5 +38,34 @@ namespace HirePersonality.Business.Managers.Personality
             return dto;
 
         }
+
+        public async Task<ReceivePersonalityDTO> GetPersonality(int id)
+        {
+            var rao = await _repository.GetPersonality(id);
+
+            var dto = _mapper.Map<ReceivePersonalityDTO>(rao);
+
+            return dto;
+        }
+
+        public async Task<bool> UpdatePersonality(UpdatePersonalityDTO dto)
+        {
+            var rao = _mapper.Map<UpdatePersonalityRAO>(dto);
+
+            if (await _repository.UpdatePersonality(rao))
+                return true;
+
+            else
+            {
+                throw new Exception();
+            }
+
+
+        }
+
+        public async Task<bool> DeletePersonality(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -22,7 +22,6 @@ namespace HirePersonality.API.MappingProfiles
             CreateMap<ReceivePersonalityRAO, ReceivePersonalityDTO>();
             CreateMap<ReceivePersonalityDTO, ReceivePersonalityRequest>();
 
-
             CreateMap<UpdatePersonalityRequest, UpdatePersonalityDTO>();
             CreateMap<UpdatePersonalityDTO, UpdatePersonalityRAO>();
             CreateMap<UpdatePersonalityRAO, PersonalityEntity>();

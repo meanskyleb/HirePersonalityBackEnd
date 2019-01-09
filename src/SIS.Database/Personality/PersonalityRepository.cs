@@ -42,7 +42,7 @@ namespace HirePersonality.Database.Personality
             return rao;
         }
 
-        public async Task<ReceivePersonalityRAO> GetPersonalityAsync(int id)
+        public async Task<ReceivePersonalityRAO> GetPersonality(int id)
         {
             var entity = await _context
                 .PersonalityTableAccess
@@ -58,12 +58,12 @@ namespace HirePersonality.Database.Personality
         {
             var entity = await _context
                 .PersonalityTableAccess
-                .SingleAsync(e => e.PersonalityEntityId == rao.PersonalityEntityId);
+                .SingleOrDefaultAsync(e => e.PersonalityEntityId == rao.PersonalityEntityId);
 
-            entity = _mapper.Map<PersonalityEntity>(rao);
-                
-                
-                throw new NotImplementedException();
+            entity.PersonalityNumber = rao.PersonalityNumber;
+            entity.PersonalityType = rao.PersonalityType;
+
+            return _context.SaveChanges() == 1;
         }
 
         public Task<bool> DeletePersonality(int id)

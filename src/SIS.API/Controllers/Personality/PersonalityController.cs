@@ -68,5 +68,33 @@ namespace HirePersonality.API.Controllers.Personality
 
             return Ok(request);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetPersonality(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var dto = await _manager.GetPersonality(id);
+
+            var request =
+                _mapper.Map<ReceivePersonalityRequest>(dto);
+
+            return Ok(request);
+        }
+        [HttpPut]
+        public async Task<IActionResult> UpdatePersonality(UpdatePersonalityRequest request)
+        {
+            var dto = _mapper.Map<UpdatePersonalityDTO>(request);
+
+            if (await _manager.UpdatePersonality(dto))
+                return StatusCode(202);
+            else
+                return StatusCode(303);
+        }
+
+
+        
+
     }
 }
