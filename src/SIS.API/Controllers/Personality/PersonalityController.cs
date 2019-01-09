@@ -27,9 +27,9 @@ namespace HirePersonality.API.Controllers.Personality
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostPersonality(PersonalityCreateRequest request)
+        public async Task<IActionResult> PostPersonality(CreatePersonalityRequest request)
         {
-            var dto = _mapper.Map<PersonalityCreateDTO>(request);
+            var dto = _mapper.Map<CreatePersonalityDTO>(request);
 
             //Logic for personalities go here.
             if (dto.PersonalityNumber >=-30 && dto.PersonalityNumber < 5)

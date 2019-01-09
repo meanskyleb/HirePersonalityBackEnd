@@ -54,12 +54,19 @@ namespace HirePersonality.Database.Personality
 
         }
 
-        public Task<UpdatePersonalityRAO> UpdatePersonality(int id)
+        public async Task<bool> UpdatePersonality(UpdatePersonalityRAO rao)
         {
-            throw new NotImplementedException();
+            var entity = await _context
+                .PersonalityTableAccess
+                .SingleAsync(e => e.PersonalityEntityId == rao.PersonalityEntityId);
+
+            entity = _mapper.Map<PersonalityEntity>(rao);
+                
+                
+                throw new NotImplementedException();
         }
 
-        public Task<DeletePersonalityRAO> DeletePersonality(int id)
+        public Task<bool> DeletePersonality(int id)
         {
             throw new NotImplementedException();
         }

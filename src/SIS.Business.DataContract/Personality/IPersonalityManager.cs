@@ -7,7 +7,7 @@ namespace HirePersonality.Business.DataContract.Personality
 {
     public interface IPersonalityManager
     {
-        Task<bool> CreatePersonality(PersonalityCreateDTO dto);
+        Task<bool> CreatePersonality(CreatePersonalityDTO dto);
         Task<IEnumerable<ReceivePersonalityDTO>> GetPersonality();
     }
 }

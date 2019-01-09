@@ -14,13 +14,18 @@ namespace HirePersonality.API.MappingProfiles
     {
        public PersonalityMappingProfile()
         {
-            CreateMap<PersonalityCreateRequest, PersonalityCreateDTO>();
-            CreateMap<PersonalityCreateDTO, CreatePersonalityRAO>();
+            CreateMap<CreatePersonalityRequest, CreatePersonalityDTO>();
+            CreateMap<CreatePersonalityDTO, CreatePersonalityRAO>();
             CreateMap<CreatePersonalityRAO, PersonalityEntity>();
 
             CreateMap<PersonalityEntity, ReceivePersonalityRAO>();
             CreateMap<ReceivePersonalityRAO, ReceivePersonalityDTO>();
             CreateMap<ReceivePersonalityDTO, ReceivePersonalityRequest>();
+
+
+            CreateMap<UpdatePersonalityRequest, UpdatePersonalityDTO>();
+            CreateMap<UpdatePersonalityDTO, UpdatePersonalityRAO>();
+            CreateMap<UpdatePersonalityRAO, PersonalityEntity>();
         }
     }
 }
