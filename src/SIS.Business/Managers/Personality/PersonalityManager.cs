@@ -21,6 +21,8 @@ namespace HirePersonality.Business.Managers.Personality
 
         public async Task<bool> CreatePersonality(CreatePersonalityDTO dto)
         {
+            dto.PersonalityType = AssignPersonalityType(dto.PersonalityNumber);
+
             var rao = _mapper.Map<CreatePersonalityRAO>(dto);
 
             if(await _repository.CreatePersonality(rao))
@@ -50,22 +52,47 @@ namespace HirePersonality.Business.Managers.Personality
 
         public async Task<bool> UpdatePersonality(UpdatePersonalityDTO dto)
         {
+            dto.PersonalityType = AssignPersonalityType(dto.PersonalityNumber);
+
             var rao = _mapper.Map<UpdatePersonalityRAO>(dto);
 
             if (await _repository.UpdatePersonality(rao))
                 return true;
 
-            else
-            {
                 throw new Exception();
-            }
+            
 
 
         }
 
         public async Task<bool> DeletePersonality(int id)
         {
-            throw new NotImplementedException();
+            if (await _repository.DeletePersonality(id))
+                return true;
+
+            return false;
         }
+
+        //Helper Methods
+        private int AssignPersonalityType(int personalityNumber)
+        {
+            if (personalityNumber >= -30 && personalityNumber < 5)
+            {
+                return 1;
+            }
+            else if (personalityNumber >= 5 && personalityNumber < 10)
+            {
+                return 2;
+            }
+            else if (personalityNumber >= 10 && personalityNumber < 15)
+            {
+                return 3;
+            }
+            else
+            {
+                return 4;
+            }
+        }
+
     }
 }

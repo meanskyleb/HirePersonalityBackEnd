@@ -66,9 +66,17 @@ namespace HirePersonality.Database.Personality
             return _context.SaveChanges() == 1;
         }
 
-        public Task<bool> DeletePersonality(int id)
+        public async Task<bool> DeletePersonality(int id)
         {
-            throw new NotImplementedException();
+            var entity = await _context
+                .PersonalityTableAccess
+                .SingleOrDefaultAsync(e => e.PersonalityEntityId == id);
+
+            _context.Remove(entity);
+
+            return _context.SaveChanges() == 1;
+
+            
         }
     }
 }
