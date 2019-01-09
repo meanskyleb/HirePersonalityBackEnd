@@ -31,29 +31,15 @@ namespace HirePersonality.API.Controllers.Personality
         {
             var dto = _mapper.Map<CreatePersonalityDTO>(request);
 
-            //Logic for personalities go here.
-            if (dto.PersonalityNumber >=-30 && dto.PersonalityNumber < 5)
-            {
-                dto.PersonalityType = 1;
-            }
-            else if (dto.PersonalityNumber >=5 && dto.PersonalityNumber < 10)
-            {
-                dto.PersonalityType = 2;
-            }
-            else if (dto.PersonalityNumber >= 10 && dto.PersonalityNumber < 15)
-            {
-                dto.PersonalityType = 3;
-            }
-            else
-            {
-                dto.PersonalityType = 4;
-            }
             if (await _manager.CreatePersonality(dto))
                 return StatusCode(201);
             
             throw new NotImplementedException();
         }
+       
         [HttpGet]
+        [Route("Display")]
+        [ActionName("Display")]
         public async Task<IActionResult> GetPersonality()
         {
             if (!ModelState.IsValid)
@@ -67,6 +53,49 @@ namespace HirePersonality.API.Controllers.Personality
                 _mapper.Map<IEnumerable<ReceivePersonalityRequest>>(dto);
 
             return Ok(request);
+        }
+        [HttpGet]
+        [Route("id")]
+        [ActionName("id")]
+        public async Task<IActionResult> GetPersonalityById(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var dto = await _manager.GetPersonality(id);
+
+            var request =
+                _mapper.Map<ReceivePersonalityRequest>(dto);
+
+            return Ok(request);
+        }
+        [HttpPut]
+        public async Task<IActionResult> UpdatePersonality(UpdatePersonalityRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var dto = _mapper.Map<UpdatePersonalityDTO>(request);
+
+            if (await _manager.UpdatePersonality(dto))
+                return StatusCode(202);
+            
+            else
+                return StatusCode(303);
+        }
+        [HttpDelete]
+        public async Task<IActionResult> DeletePersonality(int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            if (await _manager.DeletePersonality(id))
+                return StatusCode(217);
+            else
+                return StatusCode(303);
         }
     }
 }
