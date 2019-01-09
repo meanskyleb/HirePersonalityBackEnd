@@ -86,6 +86,7 @@ namespace HirePersonality.API.Controllers.Personality
             else
                 return StatusCode(303);
         }
+       
         [HttpDelete]
         public async Task<IActionResult> DeletePersonality(int id)
         {

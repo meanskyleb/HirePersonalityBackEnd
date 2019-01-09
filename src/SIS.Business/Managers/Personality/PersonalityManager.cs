@@ -57,8 +57,9 @@ namespace HirePersonality.Business.Managers.Personality
             var rao = _mapper.Map<UpdatePersonalityRAO>(dto);
 
             if (await _repository.UpdatePersonality(rao))
+            {
                 return true;
-
+            }
                 throw new Exception();
             
 
