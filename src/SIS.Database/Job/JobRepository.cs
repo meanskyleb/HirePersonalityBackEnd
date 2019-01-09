@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace HirePersonality.Database.Job
 {
@@ -27,6 +28,52 @@ namespace HirePersonality.Database.Job
             _context.JobTableAccess.AddAsync(entity);
 
             return await _context.SaveChangesAsync() == 1;
+        }
+
+        public async Task<IEnumerable<ReceiveJobRAO>> GetJob()
+        {
+            var query = await _context.JobTableAccess.ToArrayAsync();
+
+            var rao = _mapper.Map<IEnumerable<ReceiveJobRAO>>(query);
+
+
+            return rao;
+        }
+
+        public async Task<ReceiveJobRAO> GetJob(int id)
+        {
+            var entity = await _context
+                .JobTableAccess
+                .SingleAsync(e => e.JobEntityId == id);
+
+            var rao = _mapper.Map<ReceiveJobRAO>(entity);
+
+            return rao;
+
+        }
+
+        public async Task<bool> UpdateJob(UpdateJobRAO rao)
+        {
+            var entity = await _context
+                .JobTableAccess
+                .SingleOrDefaultAsync(e => e.JobEntityId == rao.JobEntityId);
+
+            entity.JobName = rao.JobName;
+
+            return _context.SaveChanges() == 1;
+        }
+
+        public async Task<bool> DeleteJob(int id)
+        {
+            var entity = await _context
+                .JobTableAccess
+                .SingleOrDefaultAsync(e => e.JobEntityId == id);
+
+            _context.Remove(entity);
+
+            return _context.SaveChanges() == 1;
+
+
         }
     }
 }

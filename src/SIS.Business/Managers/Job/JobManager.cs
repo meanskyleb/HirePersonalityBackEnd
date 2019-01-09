@@ -28,5 +28,42 @@ namespace HirePersonality.Business.Managers.Job
 
             throw new NotImplementedException();
         }
+
+        public async Task<IEnumerable<ReceiveJobDTO>> GetJob()
+        {
+            var rao = await _repository.GetJob();
+
+            var dto = _mapper.Map<IEnumerable<ReceiveJobDTO>>(rao);
+
+            return dto;
+        }
+
+        public async Task<ReceiveJobDTO> GetJob(int id)
+        {
+            var rao = await _repository.GetJob(id);
+
+            var dto = _mapper.Map<ReceiveJobDTO>(rao);
+
+            return dto;
+        }
+
+        public async Task<bool> UpdateJob(UpdateJobDTO dto)
+        {
+
+            var rao = _mapper.Map<UpdateJobRAO>(dto);
+
+            if (await _repository.UpdateJob(rao))
+                return true;
+
+            throw new Exception();
+        }
+
+        public async Task<bool> DeleteJob(int id)
+        {
+            if (await _repository.DeleteJob(id))
+                return true;
+
+            return false;
+        }
     }
 }
