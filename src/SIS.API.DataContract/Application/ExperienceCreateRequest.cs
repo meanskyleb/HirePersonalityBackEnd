@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RedStarter.API.DataContract.Application
+namespace HirePersonality.API.DataContract.Application
 {
     public class ExperienceCreateRequest
     {

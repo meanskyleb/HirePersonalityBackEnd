@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RedStarter.Business.DataContract.Application.DTOs
+namespace HirePersonality.Business.DataContract.Application.DTOs
 {
     public class DemographicCreateDTO
     {

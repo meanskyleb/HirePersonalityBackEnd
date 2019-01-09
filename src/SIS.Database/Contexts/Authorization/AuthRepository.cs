@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using RedStarter.Database.Contexts;
-using RedStarter.Database.DataContract.Authorization.Interfaces;
-using RedStarter.Database.DataContract.Authorization.RAOs;
-using RedStarter.Database.Entities.People;
+using HirePersonality.Database.Contexts;
+using HirePersonality.Database.DataContract.Authorization.Interfaces;
+using HirePersonality.Database.DataContract.Authorization.RAOs;
+using HirePersonality.Database.Entities.People;
 using System;
 using System.Threading.Tasks;
 
-namespace RedStarter.Database.Authorization
+namespace HirePersonality.Database.Authorization
 {
     public class AuthRepository : IAuthRepository
     {
@@ -23,7 +23,7 @@ namespace RedStarter.Database.Authorization
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _mapper = mapper;
+            _mapper = mapper;  
             _context = context;
         }
 
