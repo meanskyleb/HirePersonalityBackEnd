@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HirePersonality.API.Controllers.Personality
 {
-    [AllowAnonymous]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
 

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using HirePersonality.Business.DataContract.Personality;
 using HirePersonality.Database.DataContract.Personality;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +14,7 @@ namespace HirePersonality.Business.Managers.Personality
         private readonly IMapper _mapper;
         private readonly IPersonalityRepository _repository;
 
-        public PersonalityManager(IMapper mapper, IPersonalityRepository repository)
+        public PersonalityManager(IMapper mapper, IPersonalityRepository repository) 
         {
             _mapper = mapper;
             _repository = repository;
@@ -22,7 +23,7 @@ namespace HirePersonality.Business.Managers.Personality
         public async Task<bool> CreatePersonality(CreatePersonalityDTO dto)
         {
             dto.PersonalityType = AssignPersonalityType(dto.PersonalityNumber);
-
+ 
             var rao = _mapper.Map<CreatePersonalityRAO>(dto);
 
             if(await _repository.CreatePersonality(rao))
