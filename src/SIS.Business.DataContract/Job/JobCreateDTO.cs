@@ -6,12 +6,12 @@ namespace HirePersonality.Business.DataContract.Job
 {
     public class JobCreateDTO
     {
-        public string JobName { get; set; }
-        public string JobCompany { get; set; }
-        public string JobDesc { get; set; }
-        public string JobCompensation { get; set; }
-        public string JobHours { get; set; }
-        public string JobDesiredPersonality { get; set; }
+        public string Name { get; set; }
+        public string Company { get; set; }
+        public string Desc { get; set; }
+        public string Compensation { get; set; }
+        public string Hours { get; set; }
+        public string DesiredPersonality { get; set; }
         public int OwnerId { get; set; }
     }
 }
