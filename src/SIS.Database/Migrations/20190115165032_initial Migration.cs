@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HirePersonality.Database.Migrations
 {
-    public partial class initial : Migration
+    public partial class initialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -122,6 +122,40 @@ namespace HirePersonality.Database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ExperienceTableAccess", x => x.ApplicationEntityId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "JobTableAccess",
+                columns: table => new
+                {
+                    JobEntityId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: false),
+                    Company = table.Column<string>(nullable: false),
+                    Desc = table.Column<string>(nullable: false),
+                    Compensation = table.Column<string>(nullable: false),
+                    Hours = table.Column<string>(nullable: false),
+                    DesiredPersonality = table.Column<string>(nullable: false),
+                    OwnerId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JobTableAccess", x => x.JobEntityId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PersonalityTableAccess",
+                columns: table => new
+                {
+                    PersonalityEntityId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    PersonalityNumber = table.Column<int>(nullable: false),
+                    UserId = table.Column<Guid>(nullable: false),
+                    PersonalityType = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PersonalityTableAccess", x => x.PersonalityEntityId);
                 });
 
             migrationBuilder.CreateTable(
@@ -301,6 +335,12 @@ namespace HirePersonality.Database.Migrations
 
             migrationBuilder.DropTable(
                 name: "ExperienceTableAccess");
+
+            migrationBuilder.DropTable(
+                name: "JobTableAccess");
+
+            migrationBuilder.DropTable(
+                name: "PersonalityTableAccess");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
