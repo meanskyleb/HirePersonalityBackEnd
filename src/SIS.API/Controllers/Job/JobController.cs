@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HirePersonality.API.Controllers.Job
 {
-    [AllowAnonymous]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class JobController : Controller

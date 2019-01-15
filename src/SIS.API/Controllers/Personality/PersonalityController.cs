@@ -25,7 +25,7 @@ namespace HirePersonality.API.Controllers.Personality
                 _mapper = mapper;
                 _manager = manager;
         }
-
+       
         [HttpPost]
         public async Task<IActionResult> PostPersonality(CreatePersonalityRequest request)
         {
@@ -36,7 +36,7 @@ namespace HirePersonality.API.Controllers.Personality
             
             throw new NotImplementedException();
         }
-       
+
         [HttpGet]
         [Route("Display")]
         [ActionName("Display")]
@@ -54,6 +54,7 @@ namespace HirePersonality.API.Controllers.Personality
 
             return Ok(request);
         }
+
         [HttpGet]
         [Route("id")]
         [ActionName("id")]
@@ -70,6 +71,7 @@ namespace HirePersonality.API.Controllers.Personality
 
             return Ok(request);
         }
+ 
         [HttpPut]
         public async Task<IActionResult> UpdatePersonality(UpdatePersonalityRequest request)
         {
@@ -86,7 +88,7 @@ namespace HirePersonality.API.Controllers.Personality
             else
                 return StatusCode(303);
         }
-       
+        [Authorize]
         [HttpDelete]
         public async Task<IActionResult> DeletePersonality(int id)
         {

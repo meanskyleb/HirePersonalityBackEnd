@@ -39,6 +39,7 @@ using HirePersonality.Business.DataContract.Personality;
 using HirePersonality.Business.Managers.Personality;
 using HirePersonality.Database.DataContract.Personality;
 using HirePersonality.Database.Personality;
+using HirePersonality.Business.Engines;
 
 namespace HirePersonality.API
 {
@@ -120,6 +121,7 @@ namespace HirePersonality.API
             services.AddScoped<IApplicationRepository, ApplicationRepository>();
             services.AddScoped<IUserApplicationManager, UserApplicationManager>();
             services.AddScoped<IPersonalityManager, PersonalityManager>();
+            services.AddScoped<PersonalityEngine>();
             services.AddScoped<IPersonalityRepository, PersonalityRepository>();
             services.AddScoped<IJobManager, JobManager>();
             services.AddScoped<IJobRepository, JobRepository>();

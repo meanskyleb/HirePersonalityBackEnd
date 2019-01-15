@@ -18,6 +18,5 @@ namespace HirePersonality.API.DataContract.Personality
         public int Independent { get; set; }
         public int PublicSpeaking { get; set; }
         public int Quick { get; set; }       
-        public Guid UserId { get; set; }
     }
 }
