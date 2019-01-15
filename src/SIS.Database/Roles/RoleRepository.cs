@@ -15,7 +15,7 @@ namespace HirePersonality.Database.Roles
     {
         private readonly UserManager<UserEntity> _userManager;
 
-        public RoleRepository(UserManager<UserEntity> userManager, IMapper mapper)
+        public RoleRepository(UserManager<UserEntity> userManager)
         {
             _userManager = userManager;
         }

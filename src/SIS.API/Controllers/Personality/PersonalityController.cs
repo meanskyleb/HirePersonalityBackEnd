@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HirePersonality.API.Controllers.Personality
 {
-    [AllowAnonymous]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
 
@@ -45,7 +45,7 @@ namespace HirePersonality.API.Controllers.Personality
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
-            }
+            } 
 
             var dto = await _manager.GetPersonality();
 
@@ -86,6 +86,7 @@ namespace HirePersonality.API.Controllers.Personality
             else
                 return StatusCode(303);
         }
+       
         [HttpDelete]
         public async Task<IActionResult> DeletePersonality(int id)
         {

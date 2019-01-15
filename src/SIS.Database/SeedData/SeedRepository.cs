@@ -27,6 +27,7 @@ namespace HirePersonality.Database.SeedData
                 {
                     new RoleEntity{Name = "User"},
                     new RoleEntity{Name = "Admin"},
+                    new RoleEntity{Name = "Stephen"} 
                 };
 
                 foreach (var role in roles)
@@ -36,6 +37,7 @@ namespace HirePersonality.Database.SeedData
 
                 var adminUser = new UserEntity { UserName = "admin" };
                 var user = new UserEntity { UserName = "user" };
+                var stephen = new UserEntity { UserName = "stephen" };
 
                 #region
                 IdentityResult adminResult = _userManager.CreateAsync(adminUser, "password").Result;
@@ -50,6 +52,11 @@ namespace HirePersonality.Database.SeedData
                 {
                     var applicant = _userManager.FindByNameAsync("user").Result;
                     _userManager.AddToRolesAsync(applicant, new[] { "User" }).Wait();
+                }
+                if (applicantResult.Succeeded)
+                {
+                    var applicant = _userManager.FindByNameAsync("Stephen").Result;
+                    _userManager.AddToRolesAsync(stephen, new[] { "Stephen" }).Wait();
                 }
             }
         }

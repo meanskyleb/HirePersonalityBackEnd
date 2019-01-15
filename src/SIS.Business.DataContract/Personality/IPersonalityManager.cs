@@ -12,6 +12,5 @@ namespace HirePersonality.Business.DataContract.Personality
         Task<ReceivePersonalityDTO> GetPersonality(int id);
         Task<bool> UpdatePersonality(UpdatePersonalityDTO dto);
         Task<bool> DeletePersonality(int id);
-
     }
 }

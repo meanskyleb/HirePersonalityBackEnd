@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using HirePersonality.Database.Contexts;
 using HirePersonality.Database.DataContract.Personality;
+using HirePersonality.Database.Entities.People;
 using HirePersonality.Database.Entities.Personality;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,11 +17,14 @@ namespace HirePersonality.Database.Personality
     {
         private readonly SISContext _context;
         private readonly IMapper _mapper;
+        private readonly UserManager<UserEntity>_userManager;
 
-        public PersonalityRepository(SISContext context, IMapper mapper)
+
+        public PersonalityRepository(SISContext context, IMapper mapper, UserManager<UserEntity> userManager)
         {
             _context = context;
             _mapper = mapper;
+            _userManager = userManager;
         }
 
         public async Task<bool> CreatePersonality(CreatePersonalityRAO rao)
@@ -63,7 +68,7 @@ namespace HirePersonality.Database.Personality
             entity.PersonalityNumber = rao.PersonalityNumber;
             entity.PersonalityType = rao.PersonalityType;
 
-            return _context.SaveChanges() == 1;
+            return await _context.SaveChangesAsync() == 1;
         }
 
         public async Task<bool> DeletePersonality(int id)

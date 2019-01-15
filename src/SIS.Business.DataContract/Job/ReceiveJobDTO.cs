@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace HirePersonality.Database.Entities.Job
+namespace HirePersonality.Business.DataContract.Job
 {
-    public class JobEntity
+    public class ReceiveJobDTO
     {
         [Key]
         public int JobEntityId { get; set; }

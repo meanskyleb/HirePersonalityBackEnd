@@ -39,5 +39,69 @@ namespace HirePersonality.API.Controllers.Job
 
             throw new Exception();
         }
+
+        [HttpGet]
+        [Route("Display")]
+        [ActionName("Display")]
+        public async Task<IActionResult> GetJob()
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var dto = await _manager.GetJob();
+
+            var request =
+                _mapper.Map<IEnumerable<ReceiveJobRequest>>(dto);
+
+            return Ok(request);
+        }
+        
+        [HttpGet]
+        [Route("id")]
+        [ActionName("id")]
+        public async Task<IActionResult> GetJobById(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var dto = await _manager.GetJob(id);
+
+            var request =
+                _mapper.Map<ReceiveJobRequest>(dto);
+
+            return Ok(request);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdatePersonality(UpdateJobRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var dto = _mapper.Map<UpdateJobDTO>(request);
+
+            if (await _manager.UpdateJob(dto))
+                return StatusCode(202);
+
+            else
+                return StatusCode(303);
+        }
+        [HttpDelete]
+        public async Task<IActionResult> DeleteJob(int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            if (await _manager.DeleteJob(id))
+                return StatusCode(217);
+            else
+                return StatusCode(303);
+        }
     }
+
 }
