@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HirePersonality.Business.DataContract.Personality;
+using HirePersonality.Business.Engines;
 using HirePersonality.Database.DataContract.Personality;
 using Microsoft.AspNet.Identity;
 using System;
@@ -13,18 +14,20 @@ namespace HirePersonality.Business.Managers.Personality
     {
         private readonly IMapper _mapper;
         private readonly IPersonalityRepository _repository;
+        private readonly PersonalityEngine _personalityEngine;
 
-        public PersonalityManager(IMapper mapper, IPersonalityRepository repository) 
+        public PersonalityManager(IMapper mapper, IPersonalityRepository repository, PersonalityEngine personalityEngine)
         {
             _mapper = mapper;
             _repository = repository;
+            _personalityEngine = personalityEngine;
         }
 
         public async Task<bool> CreatePersonality(CreatePersonalityDTO dto)
         {
-            dto.PersonalityType = AssignPersonalityType(dto.PersonalityNumber);
+            var  dtoAnalyzed = _personalityEngine.SurveyAnalysis(dto);
  
-            var rao = _mapper.Map<CreatePersonalityRAO>(dto);
+            var rao = _mapper.Map<CreatePersonalityRAO>(dtoAnalyzed);
 
             if(await _repository.CreatePersonality(rao))
                 return true;
@@ -39,7 +42,6 @@ namespace HirePersonality.Business.Managers.Personality
             var dto = _mapper.Map<IEnumerable<ReceivePersonalityDTO>>(rao);
 
             return dto;
-
         }
 
         public async Task<ReceivePersonalityDTO> GetPersonality(int id)
@@ -53,8 +55,6 @@ namespace HirePersonality.Business.Managers.Personality
 
         public async Task<bool> UpdatePersonality(UpdatePersonalityDTO dto)
         {
-            dto.PersonalityType = AssignPersonalityType(dto.PersonalityNumber);
-
             var rao = _mapper.Map<UpdatePersonalityRAO>(dto);
 
             if (await _repository.UpdatePersonality(rao))
@@ -76,25 +76,7 @@ namespace HirePersonality.Business.Managers.Personality
         }
 
         //Helper Methods
-        private int AssignPersonalityType(int personalityNumber)
-        {
-            if (personalityNumber >= -30 && personalityNumber < 5)
-            {
-                return 1;
-            }
-            else if (personalityNumber >= 5 && personalityNumber < 10)
-            {
-                return 2;
-            }
-            else if (personalityNumber >= 10 && personalityNumber < 15)
-            {
-                return 3;
-            }
-            else
-            {
-                return 4;
-            }
-        }
+       
 
     }
 }
