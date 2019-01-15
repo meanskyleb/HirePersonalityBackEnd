@@ -17,6 +17,11 @@ namespace HirePersonality.API.MappingProfiles
             CreateMap<JobCreateRequest, JobCreateDTO>();
             CreateMap<JobCreateDTO, JobCreateRAO>();
             CreateMap<JobCreateRAO, JobEntity>();
+
+            CreateMap<JobEntity, ReceiveJobRAO>();
+            CreateMap<ReceiveJobRAO, ReceiveJobDTO>();
+            CreateMap<ReceiveJobDTO, ReceiveJobRequest>();
+
         }
     }
 }

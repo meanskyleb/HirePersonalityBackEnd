@@ -58,7 +58,7 @@ namespace HirePersonality.Database.Job
                 .JobTableAccess
                 .SingleOrDefaultAsync(e => e.JobEntityId == rao.JobEntityId);
 
-            entity.JobName = rao.JobName;
+            entity.Name = rao.JobName;
 
             return _context.SaveChanges() == 1;
         }

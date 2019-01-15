@@ -49,7 +49,10 @@ namespace HirePersonality.Database.Authorization
         {
             var user = _mapper.Map<UserEntity>(regUserRAO);
 
+
             var result = await _userManager.CreateAsync(user, password);
+
+            await _userManager.AddToRoleAsync(user, "user");
 
             if (result.Succeeded)
             {

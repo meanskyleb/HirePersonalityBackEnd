@@ -11,22 +11,22 @@ namespace HirePersonality.Database.Entities.Job
         public int JobEntityId { get; set; }
 
         [Required]
-        public string JobName { get; set; }
+        public string Name { get; set; }
 
         [Required]
-        public string JobCompany { get; set; }
+        public string Company { get; set; }
 
         [Required]
-        public string JobDesc { get; set; }
+        public string Desc { get; set; }
 
         [Required]
-        public string JobCompensation { get; set; }
+        public string Compensation { get; set; }
 
         [Required]
-        public string JobHours { get; set; }
+        public string Hours { get; set; }
 
         [Required]
-        public string JobDesiredPersonality { get; set; }
+        public string DesiredPersonality { get; set; }
 
         [Required]
         public int OwnerId { get; set; }
