@@ -13,7 +13,7 @@ namespace HirePersonality.Database.Entities.Personality
         [Key]
         public int PersonalityEntityId { get; set; }
         public int PersonalityNumber { get; set; }
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
         public int PersonalityType { get; set; }
     }
 }

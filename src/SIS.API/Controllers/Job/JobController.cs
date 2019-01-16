@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using HirePersonality.API.DataContract.Job;
 using HirePersonality.Business.DataContract.Job;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,6 +34,7 @@ namespace HirePersonality.API.Controllers.Job
             }
 
             var dto = _mapper.Map<JobCreateDTO>(request);
+            dto.OwnerId = getUserId();
 
             if (await _manager.CreateJob(dto))
                 return StatusCode(201);
@@ -101,6 +103,11 @@ namespace HirePersonality.API.Controllers.Job
                 return StatusCode(217);
             else
                 return StatusCode(303);
+        }
+        private int getUserId()
+        {
+            var userId = int.Parse(User.Identity.GetUserId());
+            return userId;
         }
     }
 
