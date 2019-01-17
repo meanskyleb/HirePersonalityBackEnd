@@ -75,6 +75,11 @@ namespace HirePersonality.Business.Managers.Personality
             return false;
         }
 
+        public async Task<int> GetPersonalityType(int id)
+        {
+            var personalityType = await _repository.GetPersonalityType(id);
+                return personalityType;
+        }
         //Helper Methods
        
 

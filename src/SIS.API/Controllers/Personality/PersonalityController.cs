@@ -106,6 +106,15 @@ namespace HirePersonality.API.Controllers.Personality
         {
             var userId = int.Parse(User.Identity.GetUserId());
             return userId;
+        } 
+
+        [HttpGet]
+        [Route("Type")]
+        public async Task<int> GetPersonalityType()
+        {
+            var ownerId = GetUserId();
+
+            return await _manager.GetPersonalityType(ownerId);
         }
     }
 }

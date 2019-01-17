@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using HirePersonality.Database.Entities.People;
+using System.Linq;
 
 namespace HirePersonality.Database.Job
 {
@@ -35,6 +36,16 @@ namespace HirePersonality.Database.Job
         public async Task<IEnumerable<ReceiveJobRAO>> GetJob()
         {
             var query = await _context.JobTableAccess.ToArrayAsync();
+
+            var rao = _mapper.Map<IEnumerable<ReceiveJobRAO>>(query);
+
+
+            return rao;
+        }
+
+        public async Task<IEnumerable<ReceiveJobRAO>> GetJobsByType(int personalityType)
+        {
+            var query = await _context.JobTableAccess.Where(e => e.DesiredPersonality == personalityType).ToArrayAsync();
 
             var rao = _mapper.Map<IEnumerable<ReceiveJobRAO>>(query);
 

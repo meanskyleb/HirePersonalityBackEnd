@@ -39,6 +39,15 @@ namespace HirePersonality.Business.Managers.Job
             return dto;
         }
 
+        public async Task<IEnumerable<ReceiveJobDTO>> GetJobsByType(int personalityType)
+        {
+            var rao = await _repository.GetJob();
+
+            var dto = _mapper.Map<IEnumerable<ReceiveJobDTO>>(rao);
+
+            return dto;
+        }
+
         public async Task<ReceiveJobDTO> GetJob(int id)
         {
             var rao = await _repository.GetJob(id);
