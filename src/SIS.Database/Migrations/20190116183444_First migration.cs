@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HirePersonality.Database.Migrations
 {
-    public partial class initialMigration : Migration
+    public partial class Firstmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -150,7 +150,7 @@ namespace HirePersonality.Database.Migrations
                     PersonalityEntityId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     PersonalityNumber = table.Column<int>(nullable: false),
-                    UserId = table.Column<Guid>(nullable: false),
+                    UserId = table.Column<int>(nullable: false),
                     PersonalityType = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

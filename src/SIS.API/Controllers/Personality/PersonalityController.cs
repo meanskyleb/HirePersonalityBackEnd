@@ -28,10 +28,11 @@ namespace HirePersonality.API.Controllers.Personality
         }
        
         [HttpPost]
+        [Route("Create")]
         public async Task<IActionResult> PostPersonality(CreatePersonalityRequest request)
         {
             var dto = _mapper.Map<CreatePersonalityDTO>(request);
-            dto.UserId = getUserId();
+            dto.UserId = GetUserId();
             if (await _manager.CreatePersonality(dto))
                 return StatusCode(201);
             
@@ -101,7 +102,7 @@ namespace HirePersonality.API.Controllers.Personality
             else
                 return StatusCode(303);
         }
-        private int getUserId()
+        private int GetUserId()
         {
             var userId = int.Parse(User.Identity.GetUserId());
             return userId;

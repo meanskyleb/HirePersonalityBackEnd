@@ -34,7 +34,7 @@ namespace HirePersonality.API.Controllers.Job
             }
 
             var dto = _mapper.Map<JobCreateDTO>(request);
-            dto.OwnerId = getUserId();
+            dto.OwnerId = GetUserId();
 
             if (await _manager.CreateJob(dto))
                 return StatusCode(201);
@@ -104,7 +104,7 @@ namespace HirePersonality.API.Controllers.Job
             else
                 return StatusCode(303);
         }
-        private int getUserId()
+        private int GetUserId()
         {
             var userId = int.Parse(User.Identity.GetUserId());
             return userId;

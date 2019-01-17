@@ -9,7 +9,7 @@ namespace HirePersonality.Business.Engines
     {
         public CreatePersonalityDTO SurveyAnalysis(CreatePersonalityDTO dto)
         {
-            dto.PersonalityNumber = -20 -
+            dto.PersonalityNumber = 0 -
                 dto.Conversation + dto.Independent + dto.Picture + dto.PublicSpeaking + dto.Quick + dto.Leadership + dto.Problem
                 - dto.Minutiae - dto.Technical - dto.Design - dto.Teamwork - dto.Relationship;
 
@@ -19,11 +19,11 @@ namespace HirePersonality.Business.Engines
         }
         private int AssignPersonalityType(int personalityNumber)
         {
-            if (personalityNumber >= -30 && personalityNumber < -10)
+            if (personalityNumber >= -30 && personalityNumber < 0)
             {
                 return 1; //Entry-Level
             }
-            else if (personalityNumber >= -10 && personalityNumber < 10)
+            else if (personalityNumber >= 0 && personalityNumber < 10)
             {
                 return 2; //Technically-minded
             }
