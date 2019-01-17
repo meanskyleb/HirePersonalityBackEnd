@@ -26,7 +26,7 @@ namespace HirePersonality.API.DataContract.Job
         public string Hours { get; set; }
 
         [Required]
-        public string DesiredPersonality { get; set; }
+        public int DesiredPersonality { get; set; }
 
         [Required]
         public int OwnerId { get; set; }
