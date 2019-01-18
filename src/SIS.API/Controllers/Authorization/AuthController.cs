@@ -67,6 +67,8 @@ namespace HirePersonality.API.Controllers.Authorization
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginUserRequest loginUserRequest)
         {
+           
+
             var userDTO = _mapper.Map<QueryForExistingUserDTO>(loginUserRequest);
 
             var returnedUser = await _authManager.LoginUser(userDTO);
@@ -74,14 +76,22 @@ namespace HirePersonality.API.Controllers.Authorization
             var appUser = await _userManager.Users
                   .FirstOrDefaultAsync(u => u.NormalizedUserName == userDTO.UserName.ToUpper());
 
-            var userResponse = _mapper.Map<ReceivedExistingUserResponse>(appUser);
+            var _admin = await AmIAnAdmin(appUser);
 
-            if(userResponse != null)
+            var actualUserResponse = new ReceivedExistingUserResponse
+            {
+                UserName = appUser.UserName,
+                Id = appUser.Id,
+                Admin = _admin
+            };
+
+            if(actualUserResponse != null)
             {
                 return Ok(new
                 {
                     token = GenerateTokenString(appUser).Result,
-                    user = userResponse
+                    user = actualUserResponse,
+                    admin = _admin
                 });
             }
 
@@ -137,6 +147,15 @@ namespace HirePersonality.API.Controllers.Authorization
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
             return tokenHandler.WriteToken(token);
+        }
+
+        private async Task<bool> AmIAnAdmin(UserEntity user)
+        {
+            var id = user.Id;
+
+            var admin = await _authManager.AmIAnAdmin(id);
+
+            return  admin;
         }
     }
 }

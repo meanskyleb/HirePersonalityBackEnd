@@ -51,5 +51,10 @@ namespace HirePersonality.Business.Managers.Authorization
         {
            return await _authRepository.UserExists(email);
         }
+
+        public async Task<bool> AmIAnAdmin(int id)
+        {
+            return await _authRepository.AmIAnAdmin(id);
+        }
     }
 }

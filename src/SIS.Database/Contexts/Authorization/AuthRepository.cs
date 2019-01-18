@@ -39,10 +39,21 @@ namespace HirePersonality.Database.Authorization
                 var appUser = await _userManager.Users
                   .FirstOrDefaultAsync(u => u.NormalizedUserName == queryRao.UserName.ToUpper());
 
-                return _mapper.Map<ReceivedExistingUserRAO>(appUser);
+                var admin = IsUserAdmin(appUser);
+
+                var rao =_mapper.Map<ReceivedExistingUserRAO>(appUser);
+
+                rao.Admin = await admin;
+
+                return rao;
             }
 
             throw new NotImplementedException();
+        }
+
+        private async Task<bool> IsUserAdmin(UserEntity user)
+        {
+            return await _userManager.IsInRoleAsync(user, "Admin");
         }
 
         public async Task<ReceivedExistingUserRAO> Register(RegisterUserRAO regUserRAO, string password)
@@ -82,6 +93,15 @@ namespace HirePersonality.Database.Authorization
             var user = _mapper.Map<ReceivedExistingUserRAO>(query);
 
             return user;
+        }
+
+        public async Task<bool> AmIAnAdmin(int id)
+        {
+            var entity = await _context.UserRoles.FirstOrDefaultAsync(e => e.UserId == id);
+
+            var admin = entity.RoleId == 2;
+
+            return admin;
         }
     }
 }

@@ -11,5 +11,6 @@ namespace HirePersonality.Business.DataContract.Authorization.Interfaces
         Task<ReceivedExistingUserDTO> RegisterUser(RegisterUserDTO userDTO);
         Task<ReceivedExistingUserDTO> LoginUser(QueryForExistingUserDTO userDTO);
         Task<bool> UserExists(string user);
+        Task<bool> AmIAnAdmin(int id);
     }
 }
