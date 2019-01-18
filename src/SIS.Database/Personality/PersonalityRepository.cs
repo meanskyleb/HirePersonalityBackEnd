@@ -88,5 +88,17 @@ namespace HirePersonality.Database.Personality
 
             return entity.PersonalityType;
         }
+
+        //public async Task<IEnumerable<ReceivePersonalityRAO>> GetPersonalityByUser(int id)
+        //{
+        //    var query = await _context
+        //        .PersonalityTableAccess
+        //        .Where(e => e.UserId == id)
+        //        .ToArrayAsync();
+
+        //    var mappedQuery = _mapper.Map<IEnumerable<ReceivePersonalityRAO>>(query);
+
+        //    return mappedQuery;
+        //}
     }
 }
