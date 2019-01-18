@@ -21,6 +21,6 @@ namespace HirePersonality.Business.DataContract.Personality
         public int Quick { get; set; }
         public int PersonalityNumber { get; set; }
         public int PersonalityType { get; set; }
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
     }
 }

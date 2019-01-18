@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using HirePersonality.API.DataContract.Personality;
 using HirePersonality.Business.DataContract.Personality;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,10 +28,11 @@ namespace HirePersonality.API.Controllers.Personality
         }
        
         [HttpPost]
+        [Route("Create")]
         public async Task<IActionResult> PostPersonality(CreatePersonalityRequest request)
         {
             var dto = _mapper.Map<CreatePersonalityDTO>(request);
-
+            dto.UserId = GetUserId();
             if (await _manager.CreatePersonality(dto))
                 return StatusCode(201);
             
@@ -99,6 +101,20 @@ namespace HirePersonality.API.Controllers.Personality
                 return StatusCode(217);
             else
                 return StatusCode(303);
+        }
+        private int GetUserId()
+        {
+            var userId = int.Parse(User.Identity.GetUserId());
+            return userId;
+        } 
+
+        [HttpGet]
+        [Route("Type")]
+        public async Task<int> GetPersonalityType()
+        {
+            var ownerId = GetUserId();
+
+            return await _manager.GetPersonalityType(ownerId);
         }
     }
 }

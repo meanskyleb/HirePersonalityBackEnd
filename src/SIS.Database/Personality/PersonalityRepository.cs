@@ -51,7 +51,7 @@ namespace HirePersonality.Database.Personality
         {
             var entity = await _context
                 .PersonalityTableAccess
-                .SingleAsync(e => e.PersonalityEntityId == id);
+                .SingleOrDefaultAsync(e => e.PersonalityEntityId == id);
 
             var rao = _mapper.Map<ReceivePersonalityRAO>(entity);
 
@@ -79,9 +79,26 @@ namespace HirePersonality.Database.Personality
 
             _context.Remove(entity);
 
-            return _context.SaveChanges() == 1;
-
-            
+            return _context.SaveChanges() == 1;  
         }
+
+        public async Task<int> GetPersonalityType(int id)
+        {
+            var entity = await _context.PersonalityTableAccess.FirstOrDefaultAsync(e => e.UserId == id);
+
+            return entity.PersonalityType;
+        }
+
+        //public async Task<IEnumerable<ReceivePersonalityRAO>> GetPersonalityByUser(int id)
+        //{
+        //    var query = await _context
+        //        .PersonalityTableAccess
+        //        .Where(e => e.UserId == id)
+        //        .ToArrayAsync();
+
+        //    var mappedQuery = _mapper.Map<IEnumerable<ReceivePersonalityRAO>>(query);
+
+        //    return mappedQuery;
+        //}
     }
 }

@@ -12,6 +12,6 @@ namespace HirePersonality.API.DataContract.Job
         public string JobDesc { get; set; }
         public string JobCompensation { get; set; }
         public string JobHours { get; set; }
-        public string JobDesiredPersonality { get; set; }
+        public int JobDesiredPersonality { get; set; }
     }
 }

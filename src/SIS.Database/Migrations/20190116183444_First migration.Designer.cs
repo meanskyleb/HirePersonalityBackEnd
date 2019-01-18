@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HirePersonality.Database.Migrations
 {
     [DbContext(typeof(SISContext))]
-    [Migration("20190115165032_initial Migration")]
-    partial class initialMigration
+    [Migration("20190116183444_First migration")]
+    partial class Firstmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -204,7 +204,7 @@ namespace HirePersonality.Database.Migrations
 
                     b.Property<int>("PersonalityType");
 
-                    b.Property<Guid>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("PersonalityEntityId");
 

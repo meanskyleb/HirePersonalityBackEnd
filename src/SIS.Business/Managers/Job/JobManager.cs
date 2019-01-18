@@ -23,6 +23,7 @@ namespace HirePersonality.Business.Managers.Job
         {
             var rao = _mapper.Map<JobCreateRAO>(dto);
 
+            
             if (await _repository.CreateJob(rao))
                 return true;
 
@@ -30,6 +31,15 @@ namespace HirePersonality.Business.Managers.Job
         }
 
         public async Task<IEnumerable<ReceiveJobDTO>> GetJob()
+        {
+            var rao = await _repository.GetJob();
+
+            var dto = _mapper.Map<IEnumerable<ReceiveJobDTO>>(rao);
+
+            return dto;
+        }
+
+        public async Task<IEnumerable<ReceiveJobDTO>> GetJobsByType(int personalityType)
         {
             var rao = await _repository.GetJob();
 

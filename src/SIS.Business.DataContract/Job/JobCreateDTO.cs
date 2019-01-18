@@ -11,7 +11,7 @@ namespace HirePersonality.Business.DataContract.Job
         public string Desc { get; set; }
         public string Compensation { get; set; }
         public string Hours { get; set; }
-        public string DesiredPersonality { get; set; }
+        public int DesiredPersonality { get; set; }
         public int OwnerId { get; set; }
     }
 }
