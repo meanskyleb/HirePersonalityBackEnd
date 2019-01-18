@@ -11,7 +11,7 @@ namespace HirePersonality.Business.DataContract.Personality
         Task<IEnumerable<ReceivePersonalityDTO>> GetPersonality();
         Task<ReceivePersonalityDTO> GetPersonality(int id);
         Task<bool> UpdatePersonality(UpdatePersonalityDTO dto);
-        Task<bool> DeletePersonality(int id);
+        bool DeletePersonality(int id);
         Task<int> GetPersonalityType(int ownerId);
     }
 }

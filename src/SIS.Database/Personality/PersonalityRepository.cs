@@ -71,15 +71,21 @@ namespace HirePersonality.Database.Personality
             return await _context.SaveChangesAsync() == 1;
         }
 
-        public async Task<bool> DeletePersonality(int id)
+        public bool DeletePersonality(int id)
         {
-            var entity = await _context
+            var query = _context
                 .PersonalityTableAccess
-                .SingleOrDefaultAsync(e => e.PersonalityEntityId == id);
+                .Where(e => e.UserId == id)
+                .ToList();
 
-            _context.Remove(entity);
+            int count = 0;
+            foreach (var entity in query)
+            {
+                _context.Remove(entity);
+                count++;
+            }
 
-            return _context.SaveChanges() == 1;  
+            return _context.SaveChanges() == count;  
         }
 
         public async Task<int> GetPersonalityType(int id)

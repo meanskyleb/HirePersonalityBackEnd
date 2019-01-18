@@ -67,9 +67,9 @@ namespace HirePersonality.Business.Managers.Personality
 
         }
 
-        public async Task<bool> DeletePersonality(int id)
+        public bool DeletePersonality(int id)
         {
-            if (await _repository.DeletePersonality(id))
+            if (_repository.DeletePersonality(id))
                 return true;
 
             return false;

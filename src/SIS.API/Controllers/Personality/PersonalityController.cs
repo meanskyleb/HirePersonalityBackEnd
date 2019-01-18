@@ -92,16 +92,19 @@ namespace HirePersonality.API.Controllers.Personality
         }
         [Authorize]
         [HttpDelete]
-        public async Task<IActionResult> DeletePersonality(int id)
+        [Route("Delete")]
+        public IActionResult DeletePersonality()
         {
+            var userId = int.Parse(User.Identity.GetUserId());
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (await _manager.DeletePersonality(id))
+            if (_manager.DeletePersonality(userId))
                 return StatusCode(217);
             else
                 return StatusCode(303);
         }
+
         private int GetUserId()
         {
             var userId = int.Parse(User.Identity.GetUserId());
