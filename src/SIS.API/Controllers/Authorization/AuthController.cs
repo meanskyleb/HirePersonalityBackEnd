@@ -50,7 +50,14 @@ namespace HirePersonality.API.Controllers.Authorization
             var appUser = await _userManager.Users
               .FirstOrDefaultAsync(u => u.NormalizedUserName == userDTO.UserName.ToUpper());
 
-            var userResponse = _mapper.Map<ReceivedExistingUserResponse>(appUser);
+            var _admin = await AmIAnAdmin(appUser);
+
+            var userResponse = new ReceivedExistingUserResponse
+            {
+                UserName = appUser.UserName,
+                Id = appUser.Id,
+                Admin = _admin
+            };
 
             if (userResponse != null)
             {
