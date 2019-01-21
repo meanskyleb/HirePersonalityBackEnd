@@ -59,7 +59,23 @@ namespace HirePersonality.API.Controllers.Job
 
             return Ok(request);
         }
-        
+        [HttpGet]
+        [Route("DisplayByType")]
+        [ActionName("DisplayByType")]
+        public async Task<IActionResult> GetJobByType(int type)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var dto = await _manager.GetJobByType(type);
+
+            var request =
+                _mapper.Map<IEnumerable<ReceiveJobRequest>>(dto);
+
+            return Ok(request);
+        }
         [HttpGet]
         [Route("id")]
         [ActionName("id")]

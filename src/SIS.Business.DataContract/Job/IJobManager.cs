@@ -9,6 +9,7 @@ namespace HirePersonality.Business.DataContract.Job
     {
         Task<bool> CreateJob(JobCreateDTO dto);
         Task<IEnumerable<ReceiveJobDTO>> GetJob();
+        Task<IEnumerable<ReceiveJobDTO>> GetJobByType(int personalityType);
         Task<ReceiveJobDTO> GetJob(int id);
         Task<bool> UpdateJob(UpdateJobDTO dto);
         Task<bool> DeleteJob(int id);

@@ -43,7 +43,7 @@ namespace HirePersonality.Database.Job
             return rao;
         }
 
-        public async Task<IEnumerable<ReceiveJobRAO>> GetJobsByType(int personalityType)
+        public async Task<IEnumerable<ReceiveJobRAO>> GetJobByType(int personalityType)
         {
             var query = await _context.JobTableAccess.Where(e => e.DesiredPersonality == personalityType).ToArrayAsync();
 
