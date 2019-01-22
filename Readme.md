@@ -1,4 +1,15 @@
-# DotNetCore-WebApi-Starter
+# Hire Personality
+
+## Scope
+Project is based on matching an individuals personality to a job that could fit their interests. This is the back half of the program, it holds the necessary framework to pass information regarding personalities, jobs, and authorization to and from a SQL database. 
+
+## Initializing the Project 
+Once cloned, a migration will need to be run to create the data tables. You can accomplish this by following these steps:
+1. Find the package manager console in visual studio community
+2. type 'add-migrations' without the '' and press enter.
+3. type 'update-database' without the '' and press enter.
+4. wait for the command to complete and your datatables should be functional.
+
 
 ## Architecture
 This project uses N-Tier architecture to encapsulate structural concerns of the application into assemblies per concern.
