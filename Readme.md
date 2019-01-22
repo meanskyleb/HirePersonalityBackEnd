@@ -10,6 +10,8 @@ Once cloned, a migration will need to be run to create the data tables. You can 
 3. type 'update-database' without the '' and press enter.
 4. wait for the command to complete and your datatables should be functional.
 
+To download the front end please go to: https://github.com/zackigoldberg/HirePersonalityFrontEnd;
+
 
 ## Architecture
 This project uses N-Tier architecture to encapsulate structural concerns of the application into assemblies per concern.
