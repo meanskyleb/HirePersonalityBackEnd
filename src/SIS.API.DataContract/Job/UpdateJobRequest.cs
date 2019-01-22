@@ -7,11 +7,11 @@ namespace HirePersonality.API.DataContract.Job
     public class UpdateJobRequest
     {
         public int JobEntityId { get; set; }
-        public string JobName { get; set; }
-        public string JobCompany { get; set; }
-        public string JobDesc { get; set; }
-        public string JobCompensation { get; set; }
-        public string JobHours { get; set; }
-        public int JobDesiredPersonality { get; set; }
+        public string Name { get; set; }
+        public string Company { get; set; }
+        public string Desc { get; set; }
+        public string Compensation { get; set; }
+        public string Hours { get; set; }
+        public int? DesiredPersonality { get; set; }
     }
 }

@@ -70,8 +70,30 @@ namespace HirePersonality.Database.Job
             var entity = await _context
                 .JobTableAccess
                 .SingleOrDefaultAsync(e => e.JobEntityId == rao.JobEntityId);
-
-            entity.Name = rao.JobName;
+            if (rao.Name != null)
+            {
+                entity.Name = rao.Name;
+            }
+            if (rao.Company != null)
+            {
+                entity.Company = rao.Company;
+            }
+            if (rao.Desc != null)
+            {
+                entity.Desc = rao.Desc;
+            }
+            if (rao.Compensation != null)
+            {
+                entity.Compensation = rao.Compenstaion;
+            }
+            if (rao.Hours != null)
+            {
+                entity.Hours = rao.Hours;
+            }
+            if (rao.DesiredPersonality != null)
+            {
+                entity.DesiredPersonality = rao.DesiredPersonality;
+            }
 
             return _context.SaveChanges() == 1;
         }
