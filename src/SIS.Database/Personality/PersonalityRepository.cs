@@ -63,7 +63,7 @@ namespace HirePersonality.Database.Personality
         {
             var entity = await _context
                 .PersonalityTableAccess
-                .SingleOrDefaultAsync(e => e.PersonalityEntityId == rao.PersonalityEntityId);
+                .SingleOrDefaultAsync(e => e.UserId == rao.OwnerId);
 
             entity.PersonalityNumber = rao.PersonalityNumber;
             entity.PersonalityType = rao.PersonalityType;

@@ -106,22 +106,7 @@ namespace HirePersonality.API.Controllers.Authorization
         }
 
 
-
-        [HttpGet("userExists")]
-        public async Task<IActionResult> UserExists(string email)
-        {
-            var userExists = await _authManager.UserExists(email);
-
-            if (userExists)
-            {
-                return Ok(true);
-            }
-            else
-            {
-                return Ok(false);
-            }
-        }
-
+     
         private async Task<string> GenerateTokenString(UserEntity user)
         {
             var claims = new List<Claim>
@@ -162,7 +147,8 @@ namespace HirePersonality.API.Controllers.Authorization
 
             var admin = await _authManager.AmIAnAdmin(id);
 
-            return  admin;
+            return admin;
         }
+
     }
 }

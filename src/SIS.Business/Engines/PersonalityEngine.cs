@@ -17,6 +17,18 @@ namespace HirePersonality.Business.Engines
 
             return dto;
         }
+        public UpdatePersonalityDTO SurveyAnalysis(UpdatePersonalityDTO dto)
+        {
+            dto.PersonalityNumber = 0 -
+                dto.Conversation + dto.Independent + dto.Picture + dto.PublicSpeaking + dto.Quick + dto.Leadership + dto.Problem
+                - dto.Minutiae - dto.Technical - dto.Design - dto.Teamwork - dto.Relationship;
+
+            dto.PersonalityType = AssignPersonalityType(dto.PersonalityNumber);
+
+            return dto;
+        }
+
+
         private int AssignPersonalityType(int personalityNumber)
         {
             if (personalityNumber >= -30 && personalityNumber < 0)

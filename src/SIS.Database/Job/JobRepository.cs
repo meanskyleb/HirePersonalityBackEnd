@@ -84,7 +84,7 @@ namespace HirePersonality.Database.Job
             }
             if (rao.Compensation != null)
             {
-                entity.Compensation = rao.Compenstaion;
+                entity.Compensation = rao.Compensation;
             }
             if (rao.Hours != null)
             {
@@ -92,7 +92,7 @@ namespace HirePersonality.Database.Job
             }
             if (rao.DesiredPersonality != null)
             {
-                entity.DesiredPersonality = rao.DesiredPersonality;
+                entity.DesiredPersonality = int.Parse(rao.DesiredPersonality.ToString());
             }
 
             return _context.SaveChanges() == 1;

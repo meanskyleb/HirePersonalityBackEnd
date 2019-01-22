@@ -55,6 +55,8 @@ namespace HirePersonality.Business.Managers.Personality
 
         public async Task<bool> UpdatePersonality(UpdatePersonalityDTO dto)
         {
+            var dtoAnalyzed = _personalityEngine.SurveyAnalysis(dto);
+
             var rao = _mapper.Map<UpdatePersonalityRAO>(dto);
 
             if (await _repository.UpdatePersonality(rao))
